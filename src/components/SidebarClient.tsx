@@ -26,7 +26,7 @@ export default function SidebarClient({ leaders, commodities }: Props) {
             type="text"
             value={searchVal}
             onChange={(e) => setSearchVal(e.target.value)}
-            placeholder="Tìm kiếm tin tức, cổ phiếu..."
+            placeholder="Search news, stocks..."
             className="flex-1 text-[13px] outline-none bg-transparent"
           />
         </div>
@@ -35,28 +35,28 @@ export default function SidebarClient({ leaders, commodities }: Props) {
       {/* Banner Ad */}
       <div className="bg-gradient-to-br from-[#004370] to-[#0066aa] rounded overflow-hidden">
         <div className="p-4 text-center">
-          <p className="text-white text-[11px] font-bold uppercase tracking-wide mb-1">Quảng cáo</p>
+          <p className="text-white text-[11px] font-bold uppercase tracking-wide mb-1">Advertisement</p>
           <div className="bg-white/10 rounded p-3 text-white">
             <p className="text-lg font-black">iBoard</p>
-            <p className="text-[12px] opacity-80 mt-1">Bảng giá chứng khoán trực tuyến</p>
+            <p className="text-[12px] opacity-80 mt-1">Live stock price board</p>
             <button className="mt-2 bg-white text-[#004370] text-[12px] font-bold px-4 py-1.5 rounded hover:bg-gray-100 transition-colors">
-              Xem ngay
+              View Now
             </button>
           </div>
         </div>
       </div>
 
-      {/* Market leaders — REAL từ /MarketLeaderGroup */}
+      {/* Market leaders */}
       <div className="border border-gray-200 rounded overflow-hidden">
         <div className="bg-[#004370] px-3 py-2 flex items-center justify-between">
-          <h3 className="text-white text-[13px] font-bold uppercase">Cổ phiếu ảnh hưởng TT</h3>
-          <a href="/chung-khoan" className="text-blue-200 text-[11px] hover:text-white">Chi tiết »</a>
+          <h3 className="text-white text-[13px] font-bold uppercase">Market Movers</h3>
+          <a href="/stocks" className="text-blue-200 text-[11px] hover:text-white">Details »</a>
         </div>
 
         {gainers.length > 0 && (
           <>
             <div className="px-3 py-1 bg-green-50 border-b border-gray-100">
-              <span className="text-[11px] font-bold text-green-700">Kéo tăng chỉ số</span>
+              <span className="text-[11px] font-bold text-green-700">Pushing Index Up</span>
             </div>
             {gainers.map((l) => (
               <div key={l.symbol} className="flex items-center justify-between px-3 py-2 hover:bg-gray-50 border-b border-gray-100 last:border-0 cursor-pointer">
@@ -76,7 +76,7 @@ export default function SidebarClient({ leaders, commodities }: Props) {
         {losers.length > 0 && (
           <>
             <div className="px-3 py-1 bg-red-50 border-b border-gray-100">
-              <span className="text-[11px] font-bold text-red-700">Kéo giảm chỉ số</span>
+              <span className="text-[11px] font-bold text-red-700">Dragging Index Down</span>
             </div>
             {losers.map((l) => (
               <div key={l.symbol} className="flex items-center justify-between px-3 py-2 hover:bg-gray-50 border-b border-gray-100 last:border-0 cursor-pointer">
@@ -94,11 +94,11 @@ export default function SidebarClient({ leaders, commodities }: Props) {
         )}
       </div>
 
-      {/* Commodity prices — mock (endpoint không có) */}
+      {/* Commodity prices */}
       <div className="border border-gray-200 rounded overflow-hidden">
         <div className="bg-[#004370] px-3 py-2 flex items-center justify-between">
-          <h3 className="text-white text-[13px] font-bold uppercase">Giá hàng hóa</h3>
-          <a href="/hang-hoa" className="text-blue-200 text-[11px] hover:text-white">Chi tiết »</a>
+          <h3 className="text-white text-[13px] font-bold uppercase">Commodity Prices</h3>
+          <a href="/commodities" className="text-blue-200 text-[11px] hover:text-white">Details »</a>
         </div>
         <div className="divide-y divide-gray-100">
           {commodities.map((item) => (
@@ -110,8 +110,8 @@ export default function SidebarClient({ leaders, commodities }: Props) {
                 </span>
               </div>
               <div className="flex items-center justify-between mt-0.5">
-                <span className="text-[11px] text-gray-400">Mua: <span className="text-gray-700 font-medium">{item.Buy}</span></span>
-                <span className="text-[11px] text-gray-400">Bán: <span className="text-gray-700 font-medium">{item.Sell}</span></span>
+                <span className="text-[11px] text-gray-400">Buy: <span className="text-gray-700 font-medium">{item.Buy}</span></span>
+                <span className="text-[11px] text-gray-400">Sell: <span className="text-gray-700 font-medium">{item.Sell}</span></span>
               </div>
             </div>
           ))}
@@ -120,15 +120,15 @@ export default function SidebarClient({ leaders, commodities }: Props) {
 
       {/* Newsletter */}
       <div className="bg-[#e8f0fe] rounded p-4 border border-blue-200">
-        <h3 className="text-[13px] font-bold text-[#004370] mb-1">Nhận bản tin CafeF</h3>
-        <p className="text-[12px] text-gray-600 mb-3">Cập nhật tin tức tài chính - chứng khoán mỗi ngày</p>
+        <h3 className="text-[13px] font-bold text-[#004370] mb-1">CafeF Newsletter</h3>
+        <p className="text-[12px] text-gray-600 mb-3">Daily financial &amp; stock market updates</p>
         <input
           type="email"
-          placeholder="Nhập email của bạn"
+          placeholder="Enter your email"
           className="w-full border border-gray-300 rounded px-3 py-1.5 text-[12px] outline-none focus:border-[#004370] mb-2"
         />
         <button className="w-full bg-[#004370] text-white text-[12px] font-bold py-1.5 rounded hover:bg-[#003058] transition-colors">
-          Đăng ký ngay
+          Subscribe
         </button>
       </div>
     </>

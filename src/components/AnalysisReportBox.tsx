@@ -9,9 +9,9 @@ export default function AnalysisReportBox({ reports }: Props) {
     <div>
       <div className="flex items-center justify-between mb-3">
         <h2 className="text-[15px] font-bold text-[#004370] uppercase border-l-4 border-[#e8372b] pl-2">
-          Báo cáo phân tích
+          Analysis Reports
         </h2>
-        <a href="/du-lieu" className="text-[12px] text-[#004370] hover:underline">Xem tất cả »</a>
+        <a href="/data" className="text-[12px] text-[#004370] hover:underline">View all »</a>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -36,7 +36,7 @@ export default function AnalysisReportBox({ reports }: Props) {
                 <span className="text-[10px] text-gray-400">{r.fullDate}</span>
                 {r.price > 0 && (
                   <span className={`text-[11px] font-semibold ${r.changePrice >= 0 ? "text-green-600" : "text-red-600"}`}>
-                    {r.price.toLocaleString("vi-VN")}
+                    {r.price.toLocaleString("en-US")}
                     {r.changePrice !== 0 && ` (${r.changePrice > 0 ? "+" : ""}${r.changePrice})`}
                   </span>
                 )}

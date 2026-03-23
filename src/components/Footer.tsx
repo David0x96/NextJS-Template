@@ -1,10 +1,10 @@
 export default function Footer() {
   const links = {
-    "Chứng khoán": ["Thị trường", "Cổ phiếu", "Phái sinh", "ETF", "IPO"],
-    "Tài chính": ["Ngân hàng", "Bảo hiểm", "Lãi suất", "Tín dụng"],
-    "Hàng hóa": ["Vàng & Bạc", "Ngoại hối", "Dầu khí", "Nông sản"],
-    "Bất động sản": ["Tin BĐS", "Dự án", "Pháp lý BĐS"],
-    "Kinh tế": ["Vĩ mô", "Thế giới", "Chính sách", "Công nghệ"],
+    "Stocks": ["Market", "Equities", "Derivatives", "ETF", "IPO"],
+    "Finance": ["Banking", "Insurance", "Interest Rates", "Credit"],
+    "Commodities": ["Gold & Silver", "Forex", "Oil & Gas", "Agriculture"],
+    "Real Estate": ["Property News", "Projects", "Legal"],
+    "Economy": ["Macro", "Global", "Policy", "Technology"],
   };
 
   return (
@@ -19,7 +19,7 @@ export default function Footer() {
               <span className="bg-white text-[#004370] font-black text-2xl px-1 leading-none">F</span>
             </div>
             <p className="text-[12px] text-gray-400 leading-relaxed mb-4">
-              Kênh thông tin kinh tế - tài chính hàng đầu Việt Nam. Cung cấp thông tin chứng khoán, tài chính, bất động sản và kinh tế vĩ mô.
+              Vietnam&apos;s leading financial news channel. Providing stock market, finance, real estate, and macroeconomic information.
             </p>
             <div className="flex gap-2">
               {["f", "t", "in", "yt"].map((s) => (
@@ -52,15 +52,15 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-[1200px] mx-auto px-3 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="text-[11px] text-gray-500">
-            <span className="font-semibold text-gray-400">Công ty CP CafeF</span>
-            {" "}| GPDKKD số: 0108670043 | Cấp ngày: 20/12/2019
+            <span className="font-semibold text-gray-400">CafeF JSC</span>
+            {" "}| Business Reg. No: 0108670043 | Issued: 20/12/2019
           </div>
           <div className="flex flex-wrap gap-4 text-[11px] text-gray-500">
-            <a href="#" className="hover:text-gray-300">Giới thiệu</a>
-            <a href="#" className="hover:text-gray-300">Liên hệ quảng cáo</a>
-            <a href="#" className="hover:text-gray-300">Chính sách bảo mật</a>
-            <a href="#" className="hover:text-gray-300">Điều khoản sử dụng</a>
-            <a href="#" className="hover:text-gray-300">Sơ đồ trang</a>
+            <a href="#" className="hover:text-gray-300">About Us</a>
+            <a href="#" className="hover:text-gray-300">Advertise</a>
+            <a href="#" className="hover:text-gray-300">Privacy Policy</a>
+            <a href="#" className="hover:text-gray-300">Terms of Use</a>
+            <a href="#" className="hover:text-gray-300">Sitemap</a>
           </div>
         </div>
       </div>
@@ -69,7 +69,7 @@ export default function Footer() {
       <div className="bg-[#111820]">
         <div className="max-w-[1200px] mx-auto px-3 py-2 text-center">
           <p className="text-[11px] text-gray-600">
-            © 2026 CafeF. Giấy phép Mạng xã hội số 336/GP-BTTTT do Bộ Thông tin và Truyền thông cấp ngày 09/10/2014. Chịu trách nhiệm nội dung: Tổng biên tập.
+            © 2026 CafeF. Social Media License No. 336/GP-BTTTT issued by the Ministry of Information and Communications on 09/10/2014.
           </p>
         </div>
       </div>

@@ -9,7 +9,7 @@ interface Props {
 function formatDate(iso: string) {
   if (!iso) return "";
   const d = new Date(iso);
-  return d.toLocaleDateString("vi-VN", {
+  return d.toLocaleDateString("en-US", {
     day: "2-digit",
     month: "2-digit",
     year: "numeric",
@@ -25,7 +25,7 @@ export default function NewsDetailScreen({ detail, relatedNews }: Props) {
       <div className="flex-1 min-w-0">
         {/* Breadcrumb */}
         <nav className="text-[12px] text-gray-500 mb-3 flex items-center gap-1">
-          <a href="/" className="hover:text-[#004370]">Trang chủ</a>
+          <a href="/" className="hover:text-[#004370]">Home</a>
           {detail.category && (
             <>
               <span>›</span>
@@ -94,7 +94,7 @@ export default function NewsDetailScreen({ detail, relatedNews }: Props) {
       <aside className="w-[300px] flex-shrink-0 hidden lg:block">
         <div className="bg-white border border-gray-200 rounded p-4">
           <h3 className="text-[13px] font-bold text-[#004370] uppercase border-l-4 border-[#e8372b] pl-2 mb-3">
-            Tin mới nhất
+            Latest News
           </h3>
           <div className="divide-y divide-gray-100">
             {relatedNews.slice(0, 10).map((item) => {
@@ -102,7 +102,7 @@ export default function NewsDetailScreen({ detail, relatedNews }: Props) {
               return (
                 <a
                   key={item.id}
-                  href={`/tin-tuc/${slug}`}
+                  href={`/news/${slug}`}
                   className="flex gap-2 py-2.5 group hover:bg-gray-50 -mx-1 px-1 rounded transition-colors"
                 >
                   <div className="flex-1 min-w-0">

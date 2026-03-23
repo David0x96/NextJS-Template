@@ -7,7 +7,7 @@ import { getLatestNews, getAnalysisReports, getEventsHistory } from "@/services/
 import { getCommodityPrices } from "@/services/commodityService";
 import { getMarketLeaders } from "@/services/marketService";
 
-// Featured news dùng mock data (endpoint tin featured của cafef đã 404)
+// Featured news uses mock data (featured endpoint returns 404)
 import { featuredNews as MOCK_FEATURED } from "@/data/mockData";
 
 export default async function HomeScreen() {
@@ -26,22 +26,22 @@ export default async function HomeScreen() {
         {/* Left: main content */}
         <div className="space-y-4">
 
-          {/* Featured news — mock (endpoint cafef featured đã 404) */}
+          {/* Featured news — mock (cafef featured endpoint returns 404) */}
           <div className="bg-white rounded shadow-sm p-3">
             <FeaturedNews items={MOCK_FEATURED} />
           </div>
 
-          {/* Tin mới nhất — REAL từ /ajax/tinmoi.chn */}
+          {/* Latest news — REAL from /ajax/tinmoi.chn */}
           <div className="bg-white rounded shadow-sm p-4">
             <LatestNews latestItems={latestItems} />
           </div>
 
-          {/* Báo cáo phân tích — REAL từ /du-lieu/Ajax/CafeFData/AnalysisReport.ashx */}
+          {/* Analysis reports — REAL from /du-lieu/Ajax/CafeFData/AnalysisReport.ashx */}
           <div className="bg-white rounded shadow-sm p-4">
             <AnalysisReportBox reports={reports} />
           </div>
 
-          {/* Lịch sự kiện ĐHCĐ — REAL từ /get-events-history.chn */}
+          {/* Corporate events calendar — REAL from /get-events-history.chn */}
           <div className="bg-white rounded shadow-sm p-4">
             <EventsBox events={events.slice(0, 8)} />
           </div>

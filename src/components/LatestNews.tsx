@@ -9,14 +9,14 @@ export default function LatestNews({ latestItems }: Props) {
     <div>
       <div className="flex items-center justify-between mb-3">
         <h2 className="text-[15px] font-bold text-[#004370] uppercase border-l-4 border-[#e8372b] pl-2">
-          Tin mới nhất
+          Latest News
         </h2>
-        <a href="/tin-tuc" className="text-[12px] text-[#004370] hover:underline">Xem tất cả »</a>
+        <a href="/news" className="text-[12px] text-[#004370] hover:underline">View all »</a>
       </div>
       <div className="space-y-0 divide-y divide-gray-100">
         {latestItems.map((news, i) => {
           const slug = news.href.replace("https://cafef.vn/", "").replace(".chn", "");
-          const href = `/tin-tuc/${slug}`;
+          const href = `/news/${slug}`;
           return (
           <a
             key={news.id}

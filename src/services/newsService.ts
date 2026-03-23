@@ -68,7 +68,7 @@ function parseLatestNews(html: string): LatestNewsItem[] {
 // ─── API ──────────────────────────────────────────────────────────────────────
 
 /**
- * ✅ Tin mới nhất real-time
+ * ✅ Latest news real-time
  * GET /ajax/tinmoi.chn → parse HTML
  */
 export async function getLatestNews(): Promise<LatestNewsItem[]> {
@@ -77,7 +77,7 @@ export async function getLatestNews(): Promise<LatestNewsItem[]> {
 }
 
 /**
- * ✅ Lịch sự kiện doanh nghiệp (ĐHCĐ, niêm yết bổ sung...)
+ * ✅ Corporate events calendar (AGM, additional listing...)
  * GET /get-events-history.chn
  */
 export async function getEventsHistory(): Promise<EventHistoryItem[]> {
@@ -85,7 +85,7 @@ export async function getEventsHistory(): Promise<EventHistoryItem[]> {
 }
 
 /**
- * ✅ Báo cáo phân tích từ CTCK
+ * ✅ Securities firm analysis reports
  * GET /du-lieu/Ajax/CafeFData/AnalysisReport.ashx
  */
 export async function getAnalysisReports(take = 20): Promise<AnalysisReport[]> {

@@ -11,7 +11,7 @@ export default async function StockScreen() {
   return (
     <main className="flex-1 max-w-[1200px] mx-auto w-full px-3 py-4">
       <h1 className="text-xl font-bold text-[#004370] border-l-4 border-[#e8372b] pl-3 mb-4">
-        Thị trường chứng khoán
+        Stock Market
       </h1>
       <StockHistoryTable symbol="VCB" data={data.Data.Data} total={data.Data.TotalCount} />
     </main>

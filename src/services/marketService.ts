@@ -8,12 +8,12 @@ const MSH_BASE = "https://msh-appdata.cafef.vn/rest-api/api/v1";
 
 export interface MarketLeader {
   symbol: string;
-  score: number;        // dương = kéo tăng, âm = kéo giảm
+  score: number;        // positive = pushing up, negative = dragging down
   scorePercent: number;
   companyName: string;
 }
 
-/** Dùng cho Header/StockBoard — indices chưa có endpoint live, dùng mock */
+/** Used for Header/StockBoard — no live endpoint found for indices, using mock */
 export interface MarketIndex {
   IndexId: number;
   Name: string;
@@ -42,7 +42,7 @@ export async function getMarketIndices(): Promise<MarketIndex[]> {
 }
 
 /**
- * ✅ Top cổ phiếu ảnh hưởng VN-Index
+ * ✅ Top stocks influencing VN-Index
  * @param centerId 1 = HOSE, 2 = HNX
  */
 export async function getMarketLeaders(

@@ -20,7 +20,7 @@ export default function Header({ indices }: Props) {
             <span className="text-[#004370] font-black text-3xl tracking-tight leading-none">cafe</span>
             <span className="bg-[#004370] text-white font-black text-3xl px-1 leading-none">F</span>
           </div>
-          <p className="text-[10px] text-gray-500 mt-0.5">Kênh thông tin kinh tế - tài chính</p>
+          <p className="text-[10px] text-gray-500 mt-0.5">Financial &amp; Economic News Channel</p>
         </a>
 
         {/* Stock indices ticker */}
@@ -29,7 +29,7 @@ export default function Header({ indices }: Props) {
             <div key={idx.IndexId} className="flex flex-col items-center min-w-[90px]">
               <span className="text-[11px] text-gray-500 font-medium">{idx.Name}</span>
               <span className="text-sm font-bold text-gray-800">
-                {idx.IndexValue.toLocaleString("vi-VN", { minimumFractionDigits: 2 })}
+                {idx.IndexValue.toLocaleString("en-US", { minimumFractionDigits: 2 })}
               </span>
               <span className={`text-[11px] font-semibold ${idx.Up ? "text-green-600" : "text-red-600"}`}>
                 {idx.Up ? "+" : ""}{idx.Change.toFixed(2)} ({idx.Up ? "+" : ""}{idx.PercentChange.toFixed(2)}%)
@@ -48,7 +48,7 @@ export default function Header({ indices }: Props) {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onBlur={() => setSearchOpen(false)}
-                placeholder="Tìm kiếm..."
+                placeholder="Search..."
                 className="border border-gray-300 rounded px-3 py-1 text-sm w-48 outline-none focus:border-[#004370]"
               />
             ) : (
@@ -60,10 +60,10 @@ export default function Header({ indices }: Props) {
             )}
           </div>
           <button className="hidden sm:block text-sm text-[#004370] font-semibold border border-[#004370] px-3 py-1 rounded hover:bg-[#004370] hover:text-white transition-colors">
-            Đăng nhập
+            Sign In
           </button>
           <button className="hidden sm:block text-sm text-white font-semibold bg-[#e8372b] px-3 py-1 rounded hover:bg-red-700 transition-colors">
-            Đăng ký
+            Sign Up
           </button>
         </div>
       </div>
@@ -75,7 +75,7 @@ export default function Header({ indices }: Props) {
             <div key={idx.IndexId} className="flex items-center gap-1.5">
               <span className="text-[11px] font-semibold text-gray-600">{idx.Name}</span>
               <span className="text-[11px] font-bold text-gray-800">
-                {idx.IndexValue.toLocaleString("vi-VN", { minimumFractionDigits: 2 })}
+                {idx.IndexValue.toLocaleString("en-US", { minimumFractionDigits: 2 })}
               </span>
               <span className={`text-[11px] font-semibold ${idx.Up ? "text-green-600" : "text-red-600"}`}>
                 {idx.Up ? "+" : ""}{idx.PercentChange.toFixed(2)}%

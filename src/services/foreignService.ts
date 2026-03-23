@@ -17,10 +17,10 @@ export interface ForeignTradingItem {
 }
 
 /**
- * ✅ Giao dịch khối ngoại theo mã
+ * ✅ Foreign investor trading by ticker
  * @param symbol "VCB"
  * @param date   "dd-MM-yyyy"
- * @param take   số phiên (mặc định 15)
+ * @param take   number of sessions (default 15)
  */
 export async function getForeignTrading(
   symbol: string,
