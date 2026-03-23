@@ -14,10 +14,13 @@ export default function LatestNews({ latestItems }: Props) {
         <a href="/tin-tuc" className="text-[12px] text-[#004370] hover:underline">Xem tất cả »</a>
       </div>
       <div className="space-y-0 divide-y divide-gray-100">
-        {latestItems.map((news, i) => (
+        {latestItems.map((news, i) => {
+          const slug = news.href.replace("https://cafef.vn/", "").replace(".chn", "");
+          const href = `/tin-tuc/${slug}`;
+          return (
           <a
             key={news.id}
-            href={news.href}
+            href={href}
             className="flex items-start gap-3 py-2.5 group hover:bg-gray-50 px-1 -mx-1 rounded transition-colors"
           >
             <span className="flex-shrink-0 w-5 h-5 rounded-full bg-[#004370] text-white text-[10px] font-bold flex items-center justify-center mt-0.5">
@@ -32,7 +35,8 @@ export default function LatestNews({ latestItems }: Props) {
               )}
             </div>
           </a>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

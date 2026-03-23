@@ -104,3 +104,76 @@ export async function getAnalysisReports(take = 20): Promise<AnalysisReport[]> {
 export async function getTopEventHtml(): Promise<string> {
   return getText(`${BASE}/ajax/top-event.chn`, undefined, 300);
 }
+
+// ─── News Detail ──────────────────────────────────────────────────────────────
+
+export interface NewsDetail {
+  slug: string;
+  title: string;
+  sapo: string;
+  author: string;
+  publishedTime: string;
+  ogImage: string;
+  category: string;
+  categoryUrl: string;
+  contentHtml: string;
+  tags: string[];
+}
+
+function parseNewsDetail(html: string, slug: string): NewsDetail {
+  const titleMatch = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
+  const title = titleMatch ? titleMatch[1].replace(/<[^>]+>/g, "").trim() : "";
+
+  const sapoMatch = html.match(/class="sapo"[^>]*>([\s\S]*?)<\/h2>/);
+  const sapo = sapoMatch ? sapoMatch[1].replace(/<[^>]+>/g, "").trim() : "";
+
+  const authorMatch = html.match(/<p class="author">([\s\S]*?)<\/p>/);
+  const author = authorMatch ? authorMatch[1].replace(/<[^>]+>/g, "").trim() : "";
+
+  const timeMatch = html.match(/"datePublished"\s*:\s*"([^"]+)"/);
+  const publishedTime = timeMatch ? timeMatch[1] : "";
+
+  const imgMatch = html.match(/property="og:image"\s+content="([^"]+)"/);
+  const ogImage = imgMatch ? imgMatch[1] : "";
+
+  // breadcrumb second item
+  const breadcrumbs = [...html.matchAll(/"@id"\s*:\s*"(https:\/\/cafef[^"]+)"[\s\S]*?"name"\s*:\s*"([^"]+)"/g)];
+  const category = breadcrumbs[1] ? breadcrumbs[1][2] : "";
+  const categoryUrl = breadcrumbs[1] ? breadcrumbs[1][1] : "";
+
+  // article body
+  const contentStart = html.indexOf('data-role="content">');
+  let contentHtml = "";
+  if (contentStart > -1) {
+    const chunk = html.slice(contentStart + 'data-role="content">'.length, contentStart + 40000);
+    contentHtml = chunk
+      .replace(/<script[\s\S]*?<\/script>/gi, "")
+      .replace(/<style[\s\S]*?<\/style>/gi, "")
+      .replace(/<div[^>]*class="tindnd[^"]*"[\s\S]*?<\/div>\s*<\/div>/gi, "")
+      .replace(/<div[^>]*data-marked-zoneid[\s\S]*?<\/div>\s*<\/div>/gi, "")
+      .split("</div>")[0] // take up to first major closing div
+      || chunk.slice(0, 8000);
+  }
+
+  // tags
+  const tagBlockMatch = html.match(/pnShowTag[\s\S]*?([\s\S]*?)(?=class="relate|id="comment|<\/div>\s*<\/div>)/);
+  const tags: string[] = [];
+  if (tagBlockMatch) {
+    const tagRe = /<a[^>]*>([^<]+)<\/a>/g;
+    let m: RegExpExecArray | null;
+    while ((m = tagRe.exec(tagBlockMatch[1])) !== null) {
+      const tag = m[1].trim();
+      if (tag && tag.length < 60) tags.push(tag);
+    }
+  }
+
+  return { slug, title, sapo, author, publishedTime, ogImage, category, categoryUrl, contentHtml, tags };
+}
+
+/**
+ * ✅ Chi tiết bài viết — parse HTML từ cafef.vn/{slug}.chn
+ */
+export async function getNewsDetail(slug: string): Promise<NewsDetail> {
+  const html = await getText(`${BASE}/${slug}.chn`, undefined, 300);
+  return parseNewsDetail(html, slug);
+}
