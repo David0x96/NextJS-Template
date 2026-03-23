@@ -1,10 +1,11 @@
 /**
- * Stock Service — s.cafef.vn
- * ✅ GET /Ajax/PageNew/DataHistory/PriceHistory.ashx
+ * Stock Service — cafef.vn
+ * ✅ GET /du-lieu/Ajax/PageNew/DataHistory/PriceHistory.ashx
+ * (s.cafef.vn/Ajax/... → 301 redirect to cafef.vn/du-lieu/Ajax/...)
  */
 import { get } from "./httpClient";
 
-const BASE = "https://s.cafef.vn";
+const BASE = "https://cafef.vn";
 
 export interface PriceHistoryItem {
   Ngay: string;
@@ -40,7 +41,7 @@ export async function getPriceHistory(
   pageSize = 20
 ): Promise<PriceHistoryResponse> {
   return get<PriceHistoryResponse>(
-    `${BASE}/Ajax/PageNew/DataHistory/PriceHistory.ashx`,
+    `${BASE}/du-lieu/Ajax/PageNew/DataHistory/PriceHistory.ashx`,
     { Symbol: symbol, StartDate: startDate, EndDate: endDate, PageIndex: String(pageIndex), PageSize: String(pageSize) },
     60
   );
